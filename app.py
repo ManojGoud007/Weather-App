@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import requests
 app = Flask(__name__)
 
-key = 'xxxxxxxxxx'
+key = 'your-api-key'
 @app.route("/", methods = ['GET', 'POST'])
 def index():
     if request.method == 'POST':

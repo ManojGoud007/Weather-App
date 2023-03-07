@@ -27,15 +27,37 @@
 
 <!-- this div is activated when search button is clicked -->
     {% if res %}
-    <div>
-      <h2>Weather Details</h2>
-            <div id = "details">
-                <h4>City: {{ res.name }}</h4>
-                <h4>Temperature: {{ res.main.temp }}</h4>
-                <h4>Humidity: {{ res.main.humidity }}</h4>
-                <h4>Pressure: {{ res.main.pressure }}</h4>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card" style="color: #4B515D; border-radius: 35px;background-color:#33B8FF;">
+          <div class="card-body p-4">
+            <div class="d-flex">
+              <h6 class="flex-grow-1" style="color: #1C2331;">{{ res.name }},{{ res.sys.country }}</h6>
             </div>
+            <div class="d-flex flex-column text-center mt-5 mb-4">
+              <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;">{{ res.main.temp | int }}&#8451;</h6>
+              <span class="small" style="color: #FFFFFF">{{ res.weather[0].description}}</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1" style="font-size: 1rem; color: #1C2331;">
+                <div><span class="ms-1"><b> Wind speed: {{ res.wind.speed }}kph</b>
+                  </span></div>
+                <div><span class="ms-1"><b>Humidity: {{ res.main.humidity }}%</b></span>
+                </div>
+                <div><span class="ms-1"><b>Pressure: {{ res.main.pressure }}hPa</b></span>
+                </div>
+              </div>
+              <div>
+                <img src="https://openweathermap.org/img/wn/{{res.weather[0].icon}}@2x.png"
+                  width="100px">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
     {% endif %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
